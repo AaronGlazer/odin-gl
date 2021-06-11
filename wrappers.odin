@@ -780,8 +780,8 @@ when !ODIN_DEBUG {
 	    	
 	    	{
 			    // add input arguments
-			    for arg, i in args[num_ret:] {
-			    	if i > 0 do fmt.printf(", ");
+			    for arg, j in args[num_ret:] {
+					if j > 0 do fmt.printf(", ");
 			    	
 			    	if v, ok := arg.(u32); ok { // TODO: Assumes all u32 are GLenum (they're not, GLbitfield and GLuint are also mapped to u32), fix later by better typing
 			    		if err == .INVALID_ENUM {
@@ -799,8 +799,8 @@ when !ODIN_DEBUG {
 			    	fmt.printf(") -> %v \n", args[0]);
 				} else if num_ret > 1 {
 			    	fmt.printf(") -> (");
-					for arg, i in args[1:num_ret] {
-						if i > 0 do fmt.printf(", ");
+					for arg, j in args[1:num_ret] {
+						if j > 0 do fmt.printf(", ");
 						fmt.printf("%v", arg);
 					}
 					fmt.printf(")\n");

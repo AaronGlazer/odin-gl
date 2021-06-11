@@ -40,7 +40,6 @@ get_last_error_message :: proc() -> (string, Shader_Type) {
 // it's a bit ugly looking, but meh
 when ODIN_DEBUG {
     import "core:runtime"
-    @private
     check_error :: proc(id: u32, type_: Shader_Type, status: u32,
                         iv_func: proc "c" (u32, u32, ^i32, runtime.Source_Code_Location),
                         log_func: proc "c" (u32, i32, ^i32, ^u8, runtime.Source_Code_Location), loc := #caller_location) -> bool {
@@ -72,7 +71,6 @@ when ODIN_DEBUG {
         return false;
     }
 } else {
-    @private
     check_error :: proc(id: u32, type_: Shader_Type, status: u32,
                         iv_func: proc "c" (u32, u32, ^i32),
                         log_func: proc "c" (u32, i32, ^i32, ^u8)) -> bool {
